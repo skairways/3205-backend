@@ -40,15 +40,15 @@
 4. **Backend Endpoints**
 
    ```bash
-   POST /url/shorten: creates shortened URL.
+   POST /shorten: creates shortened URL.
      Query Parameters:
        originalUrl (string, required)
 
-   GET /url/:shortUrl: returns originalUrl.
+   GET /:shortUrl: returns originalUrl.
 
-   GET /url/info/:shortUrl: returns information related to short URL.
+   GET /info/:shortUrl: returns information related to short URL.
 
-   DELETE /url/:shortUrl: deletes data related to shortURL.
+   DELETE /delete/:shortUrl: deletes data related to shortURL.
    ```
 
 5. **.env example**
