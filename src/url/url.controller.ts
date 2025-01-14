@@ -5,6 +5,7 @@ import {
   Body,
   Param,
   NotFoundException,
+  Redirect,
 } from '@nestjs/common';
 
 import { UrlService } from './url.service';
@@ -20,6 +21,18 @@ export class UrlController {
       throw new Error('Original URL is required');
     }
     return await this.urlService.shorten(originalUrl);
+  }
+
+  @Get(':shortUrl')
+  @Redirect()
+  async redirect(@Param('shortUrl') shortUrl: string) {
+    const originalUrl = await this.urlService.redirectToOriginalUrl(shortUrl);
+
+    if (!originalUrl) {
+      throw new NotFoundException('Short URL not found');
+    }
+
+    return { url: originalUrl };
   }
 
   @Get('info/:shortUrl')
