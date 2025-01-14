@@ -40,4 +40,14 @@ export class UrlService {
 
     return undefined;
   }
+
+  async deleteUrl(shortUrl: string): Promise<void> {
+    const url = await this.urlRepository.findOne({ where: { shortUrl } });
+
+    if (!url) {
+      throw new Error('Short URL not found');
+    }
+
+    await this.urlRepository.remove(url);
+  }
 }

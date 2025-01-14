@@ -6,6 +6,7 @@ import {
   Param,
   NotFoundException,
   Redirect,
+  Delete,
 } from '@nestjs/common';
 
 import { UrlService } from './url.service';
@@ -42,5 +43,14 @@ export class UrlController {
       throw new NotFoundException('Short URL not found');
     }
     return url;
+  }
+
+  @Delete(':shortUrl')
+  async delete(@Param('shortUrl') shortUrl: string): Promise<void> {
+    try {
+      await this.urlService.deleteUrl(shortUrl);
+    } catch (error) {
+      throw new NotFoundException('Short URL not found');
+    }
   }
 }
