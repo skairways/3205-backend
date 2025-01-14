@@ -12,7 +12,7 @@ import {
 import { UrlService } from './url.service';
 import { Url } from './url.entity';
 
-@Controller('url')
+@Controller()
 export class UrlController {
   constructor(private readonly urlService: UrlService) {}
 
@@ -45,7 +45,7 @@ export class UrlController {
     return url;
   }
 
-  @Delete(':shortUrl')
+  @Delete('delete/:shortUrl')
   async delete(@Param('shortUrl') shortUrl: string): Promise<void> {
     try {
       await this.urlService.deleteUrl(shortUrl);
