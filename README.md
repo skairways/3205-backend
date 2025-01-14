@@ -22,10 +22,19 @@
    npm install
    ```
 
+   ```bash
+   docker compose up -d db
+   docker compose build
+   ```
+
 3. **Run the backend server**
 
    ```bash
    npm run start
+   ```
+
+   ```bash
+   docker compose up
    ```
 
 4. **Backend Endpoints**
@@ -38,4 +47,15 @@
    GET /url/:shortUrl: returns originalUrl.
 
    DELETE /url/:shortUrl: deletes data related to shortURL.
+   ```
+
+5. **.env example**
+
+   ```
+   DB_TYPE=postgres
+   PG_HOST=localhost
+   PG_USER=postgres
+   PG_PASSWORD=postgres
+   PG_DB=postgres
+   PG_PORT=5432
    ```
