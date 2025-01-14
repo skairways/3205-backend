@@ -46,6 +46,8 @@
 
    GET /url/:shortUrl: returns originalUrl.
 
+   GET /url/info/:shortUrl: returns information related to short URL.
+
    DELETE /url/:shortUrl: deletes data related to shortURL.
    ```
 
